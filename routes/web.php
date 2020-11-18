@@ -26,3 +26,7 @@ Route::get('blade', function () {
 });
 
 Route::get('/post/', [PostController::class, 'index'])->name('post.index');
+
+Route::get('/posts', [PostController::class, 'getAllPost'])->name('post.getallpost');
+Route::get('/add-post', [PostController::class, 'addPost'])->name('post.add');
+Route::post('/add-post', [PostController::class, 'addPostSubmit'])->name('post.addsubmit');

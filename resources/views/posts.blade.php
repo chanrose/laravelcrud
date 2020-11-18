@@ -31,6 +31,7 @@
                                 <tr>
                                     <th>Post Title</th>
                                     <th>Post Body</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -38,6 +39,9 @@
                                         <tr>
                                             <td>{{$post->title}}</td>
                                             <td>{{$post->body}}</td>
+                                            <td>
+                                                <a href="./posts/{{$post->id}}">View</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

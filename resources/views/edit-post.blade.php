@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
+
 <section>
     <div class="container">
         <div class="row">
@@ -23,19 +24,25 @@
                         Post Details
                     </div>
                     <div class="card-body">
+                        @if(Session::has('post_updated'))
+                            <div class="alert alert-info" role="alert">
+                                {{Session::get('post_updated')}}
+                            </div>
+                        @endif
 
-                        <form>
+                        <form method="POST" action="{{route('post.update')}}">
                             @csrf
+                            <input type="hidden" name="id" value="{{$post->id}}" />
                             <div class="form-group">
                                 <label for="title">Post Title: </label>
                                 <input type="text" name="title" class="form-control" value="{{$post->title}}" placeholder="Enter Post Title" />
                             </div>
                             <div class="form-group">
                                 <label for="body">Post Description: </label>
-                                <textarea class="form-control" name="body" rows="3" value="{{$post->body}}" placeholder="{{$post->body}}"></textarea>
+                                <textarea class="form-control" name="body" rows="3" >{{$post->body}}</textarea>
                             </div>
                             <a href="../posts" class="btn btn-info"> Back </a>
-                           
+                            <input type="submit" class="btn btn-success" value="Update" />
                         </form>
                     </div>
                 </div>
